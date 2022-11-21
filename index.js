@@ -1,48 +1,38 @@
-const fs = require('node:fs');
-const path = require('node:path');
-const { Client, Events, Collection, GatewayIntentBits } = require('discord.js');
-const { token } = require('./config.json');
+const { Client, Events, GatewayIntentBits, REST, Routes, SlashCommandBuilder } = require('discord.js');
+const { token, clientId, guildId } = require('./config.json');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
-client.commands = new Collection();
+// Deploy command
+const pingCommand = new SlashCommandBuilder()
+		.setName('ping')
+		.setDescription('🏓 Répond pong !');
+const rest = new REST({ version: '10' }).setToken(token);
+(async () => { 
+    try {
+        console.log(`Début du chargement de la slash commande.`);
+
+        const data = await rest.put(
+            Routes.applicationGuildCommands(clientId, guildId),
+            { body: [pingCommand.toJSON()] },
+        );
+
+        console.log(`Chargement de la slash commande effectuée avec succès.`);
+    } catch (error) {
+        console.error(error);
+    }
+})();
+
+
 client.once(Events.ClientReady, c => {
 	console.log(`${c.user.tag} est connecté !`);
 });
 
-const commandsPath = path.join(__dirname, 'commands');
-const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
-
-for (const file of commandFiles) {
-	const filePath = path.join(commandsPath, file);
-	const command = require(filePath);
-	if ('data' in command && 'execute' in command) {
-        client.commands.set(command.data.name, command);
-	} else {
-		console.log(`[Avertissement] La commande à l'emplacement ${filePath} manque le champs "data" ou "execute".`);
-	}
-}
-
-
 client.on(Events.InteractionCreate, async interaction => {
-	if (!interaction.isChatInputCommand()) return;
-
-	const command = interaction.client.commands.get(interaction.commandName);
-
-	if (!command) {
-		console.error(`No command matching ${interaction.commandName} was found.`);
-		return;
-	}
-
-	try {
-		await command.execute(interaction);
-	} catch (error) {
-		console.error(error);
-		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
-	}
+    if (interaction.commandName == 'ping'){
+        await interaction.reply({ content: '🏓 Pong !', ephemeral: true });
+    }
 });
-
-
 
 client.login(token);
 
