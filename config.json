@@ -1,4 +1,6 @@
 {
-	"token": "mettre-token-ici"
+	"token": "Token-du-bot-ici",
+	"clientId": "id-du-bot",
+	"guildId": "id-du-serveur"
 }
 
