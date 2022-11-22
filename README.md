@@ -1,11 +1,11 @@
 # Installation du bot
 
-Cloner ce répertoire  
+1. Cloner ce répertoire  
 *En utilisant la commande git clone*
 
-Une fois le répertoire téléchargé sur votre pc, allez dedans et tapez la commande : `npm i`  
+2. Allez à la racine du répertoire que vous venez de téléchargez et tapez la commande : `npm i`  
 *Vous devez avoir installer nodejs pour executer cette commande*
 
-Puis, changez les trois variables dans `config.json`
+3. Changez les trois variables dans `config.json`
 
-Une fois tout cela fait, il vous suffit de faire `node .` pour lancer le bot.
+4. Pour lancer votre bot, executez `node .`.
