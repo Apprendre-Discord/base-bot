@@ -1,6 +1,6 @@
 {
 	"token": "Mettre-ici-le-token-du-bot",
-	"clientId": "Mettre-ici-l'id-du-serveur-où-le-bot-est-présent",
-	"guildId": "Mettre-ici-l'id-du-bot"
+	"clientId": "Mettre-ici-l'id-du-bot",
+	"guildId": "Mettre-ici-l'id-du-serveur-où-le-bot-est-présent"
 }
 
