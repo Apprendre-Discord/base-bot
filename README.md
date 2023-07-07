@@ -8,6 +8,15 @@
 
 3. Changez les trois variables dans `config.json`
 
-4. Pour lancer votre bot, executez `node .`
+4. Pour obtenir ces valeurs, suivez ces étapes :
+
+   1. Rendez-vous sur https://discord.com/developers/applications et créez une nouvelle application en cliquant sur le bouton en haut à droite. Entrez le nom de votre bot et acceptez les conditions d'utilisation, puis cliquez sur "Create".
+   2. Dans la section "Bot", cliquez sur "Reset Token", puis sur le bouton "Copier" pour copier le token du bot qui s'affiche. Remplacez 'Mettre-ici-le-token-du-bot' par ce token dans le fichier `config.json`.
+   3. Dans la section "OAuth2", cliquez sur "Copier" sous l'identifiant client. Remplacez 'Mettre-ici-l'id-du-bot' par ce token dans le fichier `config.json`.
+   4. Activez le mode développeur dans vos paramètres Discord en allant dans les paramètres utilisateur, puis dans la section "Avancés". Faites un clic droit sur le serveur où vous souhaitez inviter le bot, puis cliquez sur "Copier l'identifiant". Remplacez 'Mettre-ici-l'id-du-serveur-où-le-bot-est-présent' par ce token dans le fichier `config.json`.
+
+
+
+5. Pour lancer votre bot, executez `node .`
 
 Les prochaines fois que vous voudrez lancer le bot, il faudra simplement retourner à la racine de votre projet et entrer cette commande `node .`
